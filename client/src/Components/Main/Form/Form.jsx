@@ -60,7 +60,7 @@ const FormMenu = ({
         placeholder="description"
         classNameWrapper={styles.inputWrapper}
         validate={required}
-        component={(ReduxInputWrapper)}
+        component={ReduxInputWrapper}
       />
       <Button
         type="submit"
