@@ -4,7 +4,14 @@ import styles from './Popup.module.scss';
 
 const Popup = ({ closePopup, children }) => (
   <>
-    <div className={styles.wrapper} onClick={() => closePopup()} />
+    <div
+      onKeyPress={closePopup}
+      role="button"
+      tabIndex="0"
+      aria-label="close popup"
+      className={styles.wrapper}
+      onClick={() => closePopup()}
+    />
     <div className={styles.popupWrapper}>
       {children}
     </div>

@@ -26,10 +26,11 @@ const FormMenu = ({
       const oldUpdates = popupContent.updates;
       dispatch(updateRecipe(popupContent.id, {
         ...values,
-        updates:[...oldUpdates,
-          { id: oldUpdates[oldUpdates.length - 1].id + 1,
-            date: new Date().toLocaleString()
-          }]
+        updates: [...oldUpdates,
+          {
+            id: oldUpdates[oldUpdates.length - 1].id + 1,
+            date: new Date().toLocaleString(),
+          }],
       }));
     } else {
       dispatch(createRecipe({
@@ -45,20 +46,17 @@ const FormMenu = ({
 
   return (
     <Form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <h2>Create recipe</h2>
+      <h2>{popupContent ? 'Update' : 'Create'} recipe</h2>
       <Field
         name="title"
         type="text"
         placeholder="title"
         classNameWrapper={styles.inputWrapper}
         validate={required}
-        isTextInput
         component={ReduxInputWrapper}
       />
       <Field
         name="description"
-        type="email"
-        viewType="entry"
         placeholder="description"
         classNameWrapper={styles.inputWrapper}
         validate={required}
@@ -81,8 +79,13 @@ FormMenu.propTypes = {
   closePopup: PropTypes.func,
   initialize: PropTypes.func,
   popupContent: PropTypes.shape({
+    id: PropTypes.string,
     title: PropTypes.string,
     description: PropTypes.string,
+    updates: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      date: PropTypes.string,
+    })),
   }),
 };
 

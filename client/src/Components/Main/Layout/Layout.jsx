@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { menuSelector } from '../../../selectors';
 import { getMenu, deleteRecipe } from '../../../actions/menu';
 import withPopup from '../../../HOC/withPopup';
@@ -10,7 +11,7 @@ import styles from './Layout.module.scss';
 
 const Layout = ({ openPopup }) => {
   const menu = useSelector(menuSelector);
-  const isDataReceived = useSelector(state => state.menu.isDataReceived);
+  const isDataReceived = useSelector((state) => state.menu.isDataReceived);
 
   const dispatch = useDispatch();
 
@@ -33,9 +34,9 @@ const Layout = ({ openPopup }) => {
       >
         Create recipe
       </Button>
-      {!!menu.length ? (
+      {menu.length ? (
         <ul className={styles.menuList}>
-          {menu.map(item => (
+          {menu.map((item) => (
             <li key={item.id} className={styles.menuItem}>
               <h2 className={styles.menuItemTitle}>{item.title}</h2>
               <p className={styles.menuItemDesc}>{item.description}</p>
@@ -63,8 +64,8 @@ const Layout = ({ openPopup }) => {
                 <div className={styles.updatesListWrapper}>
                   <p>Updates:</p>
                   <ul>
-                    {item.updates.map(item => (
-                      <li key={item.id}>{item.date}</li>
+                    {item.updates.map((update) => (
+                      <li key={update.id}>{update.date}</li>
                     ))}
                   </ul>
                 </div>
@@ -77,6 +78,10 @@ const Layout = ({ openPopup }) => {
       )}
     </div>
   );
+};
+
+Layout.propTypes = {
+  openPopup: PropTypes.func,
 };
 
 export default withPopup(Layout);

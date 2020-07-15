@@ -12,9 +12,8 @@ const ReduxInputWrapper = ({
   classNameWrapper,
   type,
   placeholder,
-  isTextInput,
 }) => {
-  const FieldTag = isTextInput ? Input : TextField;
+  const FieldTag = type ? Input : TextField;
 
   return (
     <div className={cx(styles.wrapper, classNameWrapper)}>

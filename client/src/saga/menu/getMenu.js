@@ -4,7 +4,7 @@ import * as actionTypes from '../../actions/actionTypes';
 import { getMenuError, getMenuSuccess } from '../../actions/menu';
 
 function* getMenu() {
-  const response = yield apply(api, api.getMenu,[]);
+  const response = yield apply(api, api.getMenu, []);
   if (response.status === 200) {
     yield put(getMenuSuccess(response.data));
   } else {
