@@ -1,0 +1,19 @@
+@import "src/styles/core/vars";
+@import "src/styles/core/mixins";
+
+.wrapper {
+  width: 100%;
+}
+
+.errorText {
+  @include styleForText($fontSizeContent, $fontMain, $colorRed);
+
+  margin-top: 5px;
+}
+
+.label {
+  width: 100%;
+  color: $colorContent;
+  display: block;
+  margin-bottom: 10px;
+}

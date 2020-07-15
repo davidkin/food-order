@@ -1,0 +1,11 @@
+@import "src/styles/core/vars";
+@import "src/styles/core/mixins";
+
+.text {
+  @include styleForText(18px);
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

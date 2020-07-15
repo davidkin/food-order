@@ -1,0 +1,11 @@
+@import "src/styles/core/vars";
+@import "src/styles/core/mixins";
+
+.text {
+  @include styleForText();
+
+  height: 40px;
+  width: 94%;
+  padding: 10px;
+  border: 1px solid $colorContent;
+}

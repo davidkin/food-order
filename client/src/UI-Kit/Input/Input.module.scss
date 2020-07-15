@@ -1,0 +1,11 @@
+@import "src/styles/core/vars";
+@import "src/styles/core/mixins";
+
+.input {
+  @include styleForText();
+
+  border: 1px solid $colorContent;
+  border-radius: 5px;
+  padding: 16px 8px;
+  width: 95%;
+}
